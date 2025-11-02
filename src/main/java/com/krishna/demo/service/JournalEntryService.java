@@ -4,6 +4,8 @@ import com.krishna.demo.entity.JournalEntry;
 import com.krishna.demo.entity.User;
 import com.krishna.demo.repository.JournalEntryRepository;
 import org.bson.types.ObjectId;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +23,8 @@ public class JournalEntryService {
     @Autowired
     private UserService userService;
 
+    private static final Logger logger = LoggerFactory.getLogger(JournalEntryService.class);
+
     @Transactional
     public void saveEntry(JournalEntry journalEntry, String  username){
         try{
@@ -30,7 +34,7 @@ public class JournalEntryService {
         byUserName.getJournalEntries().add(savedEntry);
         userService.saveUser(byUserName);}
         catch (Exception e){
-            System.out.println(e);
+            logger.error("Error occurred for {}:",username, e);
         }
     }
     public void saveEntry(JournalEntry journalEntry){
@@ -59,8 +63,7 @@ public class JournalEntryService {
             }
         }
         catch (Exception e){
-            System.out.println(e);
-            throw new RuntimeException("An error occurred while deleting the entry.",e);
+            logger.error("error occurred for user '{}':", username,e);
         }
         return removed;
     }

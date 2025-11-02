@@ -1,0 +1,17 @@
+spring:
+  profiles:
+    active: dev
+
+#logging:
+#  level:
+#    com:
+#      krishna:
+#       demo:
+#         TRACE
+
+#logging:
+#  level:
+#    root:
+#      ERROR
+
+

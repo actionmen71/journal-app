@@ -1,0 +1,17 @@
+spring:
+  data:
+    mongodb:
+      database: "jornaldb"
+      auto-index-creation: true
+      uri: "mongodb+srv://actionmen71:BNiItlx9HTGmCH3K@cluster0.4i9sqwf.mongodb.net/?appName=Cluster0"
+
+  security:
+    user.name: user
+    user.password: pass
+  main:
+    allow-circular-references: true
+
+server:
+  port: 8080
+#  servlet:
+#    context-path: /journal

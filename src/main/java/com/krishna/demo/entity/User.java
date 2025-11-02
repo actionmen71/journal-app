@@ -27,6 +27,7 @@ public class User {
     @DBRef
     private List<JournalEntry> journalEntries = new ArrayList<>();
 
+//This list is added after spring security was added
     private List<String> roles;
 
 }

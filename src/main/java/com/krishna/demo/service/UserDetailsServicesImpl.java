@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class UserDetailsServices implements UserDetailsService {
+public class UserDetailsServicesImpl implements UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
@@ -27,3 +27,5 @@ public class UserDetailsServices implements UserDetailsService {
         throw new UsernameNotFoundException("User not found with username: "+ byUserName);
     }
 }
+//fetch user details from mongodb using userRepository
+//After fetching details return username, user password, and roles

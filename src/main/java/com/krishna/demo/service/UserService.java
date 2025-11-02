@@ -20,10 +20,16 @@ public class UserService {
     private UserRepository userRepository;
     public static final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
+    //this is normal method to save username and password without encryption
+    //this method should be used for saving or updating username and password without encryption
     public void saveUser(User user){
         userRepository.save(user);
     }
 
+
+    //this method to save new user with encrypted password and roles
+    //make sure to change the method name where the previous method was used
+    //this is for saving new user and not updating username and password (otherwise this method will re-encode the encoded password)
     public void saveNewUser(User user){
         user.setPassword( passwordEncoder.encode(user.getPassword()));
         user.setRoles(Arrays.asList("USER"));
@@ -33,12 +39,6 @@ public class UserService {
     public List<User> getAll(){
         return userRepository.findAll();
     }
-
-//    public Optional<User> findById(ObjectId id){
-//        return userRepository.findById(id);
-//    }
-
-
     public User findByUserName(String username){
         return userRepository.findByUserName(username);
     }
@@ -49,5 +49,7 @@ public class UserService {
 }
 
 
-
-
+/*used earlier*/
+//    public Optional<User> findById(ObjectId id){
+//        return userRepository.findById(id);
+//    }

@@ -36,6 +36,7 @@ public class SpringSecurity {
 ////                        .requestMatchers("/admin/**").hasRole("ADMIN")
 ////                        .anyRequest().authenticated()
                 .requestMatchers("/journal/**","/user/**").authenticated()
+                .requestMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().permitAll());
 
         //by default spring enables session management and stores cookies, risk for csrf attacks

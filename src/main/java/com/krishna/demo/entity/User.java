@@ -1,5 +1,6 @@
 package com.krishna.demo.entity;
 
+import lombok.Builder;
 import lombok.Data;
 import lombok.NonNull;
 import org.bson.types.ObjectId;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @Document("users")
 @Data
+@Builder
 public class User {
 
     @Id

@@ -9,9 +9,9 @@ spring:
 #       demo:
 #         TRACE
 
-#logging:
-#  level:
-#    root:
-#      ERROR
+logging:
+  level:
+    root:
+      INFO
 
 

@@ -1,0 +1,40 @@
+<configuration>
+    <!--setting folder name and location where log files will be generated-->
+    <property name="folder_log"  value="C:\Users\actio\Desktop\journal-app\Logs"/>
+
+    <!--The job of appender is to append the logs, this one is console appender and
+    since it on by default in Spring, this one can be used to modify the format and just leave it blank-->
+    <appender name ="myConsoleAppender" class = "ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>
+                %d{HH:mm:ss:SSS} [%thread]  %-5level  %logger{36} -%msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+    <!--The file appender will append the logs in a file, need location (either file name of folder directory
+     where the log files will be generated).
+     There are multiple types of file appenders-->
+    <appender name="myFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>
+                ${folder_log}/journalApp-%d{yy-MM-dd_HH}.%i.log
+            </fileNamePattern>
+            <maxFileSize>1MB</maxFileSize>
+            <maxHistory>25</maxHistory>
+
+        </rollingPolicy>
+        <encoder>
+            <pattern>
+                %d{HH:mm:ss:SSS} [%thread]  %-5level  %logger{36} -%msg%n
+            </pattern>
+        </encoder>
+
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="myConsoleAppender" />
+
+        <appender-ref ref="myFileAppender"/>
+    </root>
+</configuration>

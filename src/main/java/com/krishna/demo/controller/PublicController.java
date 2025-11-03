@@ -31,10 +31,6 @@ public class PublicController {
         }
         catch (Exception e){
             log.error("Error occurred for user '{}':",user.getUserName(), e);
-            log.info("haha");
-            log.warn("just a warning");
-            log.debug("debug has been enabled!!!");
-            log.trace("trace has been enabled!!!");
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
     }
